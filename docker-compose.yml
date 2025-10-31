@@ -1,0 +1,34 @@
+
+services:
+  # --- Service API Node.js ---
+
+  api:
+    build: .
+    container_name: api_blog
+    ports: 
+      - "3000:3000"
+    environment: 
+      DATABASE_URL: "postgresql://postgres:admin@localhost:5432/api_blog?schema=public"
+      NODE_ENV: development
+    depends_on:
+      - db
+    volumes: 
+      - .:/app
+      - /app/node_modules
+
+  # --- Service PostgreSQL ---
+  db:
+    image: postgres:18
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: api_blog
+    ports: 
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+  
+volumes: 
+  pg_data:
