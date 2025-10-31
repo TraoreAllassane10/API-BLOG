@@ -10,7 +10,7 @@ module.exports.getArticles = async () => {
 };
 
 // Création d'un article
-module.exports.createArticle = async (data) => {
+module.exports.createArticle = async (data, user) => {
   const { titre, description, categorieId } = data;
 
   //creation d'un article
@@ -18,7 +18,7 @@ module.exports.createArticle = async (data) => {
     data: {
       titre,
       description,
-      userId: 1,
+      userId: user,
       categorieId,
     },
   });

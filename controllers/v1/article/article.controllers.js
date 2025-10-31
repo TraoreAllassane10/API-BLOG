@@ -17,9 +17,10 @@ module.exports.all = async (req, res) => {
 module.exports.create = async (req, res) => {
   // Validation des entréés
   const data = articleValidators.createArticleSchema.parse(req.body);
-
+  console.log(req.user.utilisateurExiste.id);
   // Création d'un article
-  const article = await articleServices.createArticle(data);
+  const article = await articleServices.createArticle(data, req.user.utilisateurExiste.id);
+
 
   res.status(200).json({
     success: true,
