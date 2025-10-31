@@ -53,7 +53,7 @@ module.exports.create = async (req, res) => {
 module.exports.update = async (req, res) => {
   const { id } = req.params;
 
-  //VAlidation des entrées
+  // Validation des entrées
   const data = categorieValidators.updateCategorieSchema.parse(req.body);
 
   // Recuperation de la catégorie à modifier
