@@ -42,7 +42,7 @@ module.exports.create = async (req, res) => {
   // Création d'une catégorie
   const categorie = await categorieService.createCategory(data);
 
-  res.status(200).json({
+  res.status(201).json({
     success: true,
     message: "Catégorie créée",
     data: categorie,

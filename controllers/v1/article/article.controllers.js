@@ -22,7 +22,7 @@ module.exports.create = async (req, res) => {
   const article = await articleServices.createArticle(data, req.user.utilisateurExiste.id);
 
 
-  res.status(200).json({
+  res.status(201).json({
     success: true,
     message: "Article crée",
     data: article,
