@@ -2,7 +2,6 @@ const express = require('express')
 const cors = require("cors")
 const dotenv = require('dotenv')
 
-const authMiddleware = require('./middlewares/auth.Middleware')
 const authRoutes = require('./routes/v1/auth/auth.routes')
 const categorieRoutes = require("./routes/v1/categorie/categorie.routes")
 const articleRoutes = require("./routes/v1/article/article.routes")
