@@ -1,6 +1,7 @@
 const express = require('express')
 const cors = require("cors")
 const dotenv = require('dotenv')
+const helmet = require('helmet')
 
 //Immportation des bibliothèques de swagger
 const swaggerJSDoc = require('swagger-jsdoc')
@@ -13,9 +14,10 @@ const articleRoutes = require("./routes/v1/article/article.routes")
 const app = express();
 dotenv.config()
 
-app.use(cors())
-app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
+app.use(helmet());
 
 //Configuration de swagger
 const swaggerOptions = {
