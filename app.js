@@ -2,6 +2,10 @@ const express = require('express')
 const cors = require("cors")
 const dotenv = require('dotenv')
 const helmet = require('helmet')
+const morgan = require('morgan')
+
+// Importation de rate limiting
+const rateLimit = require('express-rate-limit')
 
 //Immportation des bibliothèques de swagger
 const swaggerJSDoc = require('swagger-jsdoc')
@@ -18,6 +22,18 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(helmet());
+app.use(morgan("combined"))
+
+// Configuration du rate limiting
+const limit = rateLimit({
+    windowMS: 15 * 60 * 1000, // 15 min
+    max: 100, // limiter chaque IP à 100 requêtes par windowMS
+    standardHeaders: true,
+    legacyHeaders: false,   
+    message: "Trop de requêtes, reesayer plus tard"
+});
+
+app.use("/api", limit)
 
 //Configuration de swagger
 const swaggerOptions = {

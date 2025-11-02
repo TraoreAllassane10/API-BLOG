@@ -5,7 +5,7 @@ const authMiddleware = require("../../../middlewares/auth.Middleware");
 
 /**
  * @swagger 
- * /article
+ *  /article
  *    get: 
  *     summary: Récupérer tous les articles
  *     tags: [Article]
