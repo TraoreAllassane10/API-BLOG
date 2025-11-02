@@ -11,7 +11,7 @@ let categorieId;
 beforeAll(async () => {
   // Nettoyer la base avant les tests
   await prisma.article.deleteMany();
-  await prisma.categorie.deleteMany();
+  // await prisma.categorie.deleteMany();
   await prisma.user.deleteMany();
 
   // Créer un utilisateur test
