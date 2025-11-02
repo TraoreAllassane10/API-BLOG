@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --runInBand",
+    "postinstall": "prisma generate && prisma migrate deploy",
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
